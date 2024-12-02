@@ -9,6 +9,8 @@ public class player : MonoBehaviour
     [SerializeField] private GameObject spawn1;
     [SerializeField] private GameObject spawn2;
     [SerializeField] private float ratioDisparo;
+    [SerializeField] private Joystick joystick;
+
     private float temporizador=0.5f;
     // Start is called before the first frame update
     void Start()
@@ -27,10 +29,16 @@ public class player : MonoBehaviour
     }
     void Movimiento()
     {
+#if UNITY_STANDALONE
         float PosH = Input.GetAxis("Horizontal");
         float PosV = Input.GetAxis("Vertical");
+#endif
+#if UNITY_ANDROID
+        float PosH = joystick.Horizontal;
+        float PosV = joystick.Vertical;
+#endif
+    
         transform.Translate(new Vector3(PosH, PosV, 0).normalized * Velocidad * Time.deltaTime);
-
     }
     void DelimitarMovimiento()
     {
