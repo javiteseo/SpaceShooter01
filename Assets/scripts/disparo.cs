@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class disparo : MonoBehaviour
 {
+  
     [SerializeField] private float velocidad;
     [SerializeField] private Vector3 direccion;
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(this.gameObject, 2f);
     }
 
     // Update is called once per frame

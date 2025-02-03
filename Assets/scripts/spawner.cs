@@ -27,9 +27,10 @@ public class spawner : MonoBehaviour
             textoOleadas.text = "nivel " + (i+1) + " oleada " + (j+1);
                 yield return new WaitForSeconds(3f);
                 textoOleadas.text = "";
-                for (int k = 0; k < 10; k++) //eneigos
+                for (int k = 0; k < 10; k++) //enemigos
                 {
-                    Instantiate(enemigospawner, transform.position, Quaternion.identity);
+                    Vector3 puntoAleatorio= new Vector3(transform.position.x, Random.Range(-4.5f, 4.5f), transform.position.z);
+                    Instantiate(enemigospawner, puntoAleatorio, Quaternion.identity);
                     yield return new WaitForSeconds(0.5f);
                 }
                 yield return new WaitForSeconds(2f);
